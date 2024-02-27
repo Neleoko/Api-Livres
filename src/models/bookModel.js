@@ -6,7 +6,6 @@ const client = require('../db/DB-connection');
  * @constructor
  */
 const booksConstructor = function (book) {
-    console.log(book)
     this.id = book.id;
     this.title = book.title;
     this.author = book.author;
