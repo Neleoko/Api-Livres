@@ -16,6 +16,7 @@ const express = require('express');
  * Importation des routes
  */
 const bookRouter = require('../src/routes/bookRouter.js');
+const userRouter = require('../src/routes/userRouter.js');
 
 /**
  * Initialisation et configuration
@@ -25,7 +26,7 @@ server.use(express.json());
 server.set('json spaces', 2);
 
 server.use('/books', bookRouter);
-
+server.use('/users', userRouter);
 
 const port = Number(process.env.PORT || 3000)
 server.listen(port)
