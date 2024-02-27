@@ -25,7 +25,6 @@ getBookById = (req, res) => {
 }
 
 addBook = (req, res) => {
-    console.log("body: " + req.body)
     bookModel.addBook(new bookModel.booksConstructor(req.body), (error, data) => {
         if (error) {
             res.status(500).send({
@@ -38,7 +37,7 @@ addBook = (req, res) => {
 }
 
 modifyBook = (req, res) => {
-    bookModel.modifyBook(req.params.id, req.body, (error, data) => {
+    bookModel.modifyBook(req.params.id, new bookModel.booksConstructor(req.body), (error, data) => {
         if (error) {
             res.status(500).send({
                 message: error.message || "Erreur survenue lors de la moditication d'un livre."

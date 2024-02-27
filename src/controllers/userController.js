@@ -1,6 +1,6 @@
 const userModel = require('../models/userModel');
 
-getAllUsers = (req, res) => {
+getAllUsers = (res) => {
     userModel.getAllUsers((error, data) => {
         if (error) {
             res.status(500).send({
@@ -25,7 +25,7 @@ getUserById = (req, res) => {
 }
 
 addUser = (req, res) => {
-    userModel.addUser(req.body, (error, data) => {
+    userModel.addUser(new userModel.usersConstructor(req.body), (error, data) => {
         if (error) {
             res.status(500).send({
                 message: error.message || "Erreur survenue lors de l'ajout d'un utilisateur."
@@ -37,7 +37,7 @@ addUser = (req, res) => {
 }
 
 modifyUser = (req, res) => {
-    userModel.modifyUser(req.params.id, req.body, (error, data) => {
+    userModel.modifyUser(req.params.id, new userModel.usersConstructor(req.body), (error, data) => {
         if (error) {
             res.status(500).send({
                 message: error.message || "Erreur survenue lors de la moditication d'un utilisateur."
